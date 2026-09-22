@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(data => {
                     ipUser = data.ip
                     locUser = data.city
+                    console.log(locUser)
                 })
                 .catch(error => {
                     console.error("Error fetching IP address:", error);
