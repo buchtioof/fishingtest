@@ -2,7 +2,7 @@ let ipUser = null;
 let locUser = null;
 
 document.addEventListener("DOMContentLoaded", function() {
-            fetch("https://api.ipify.org/?format=json")
+            fetch("https://ipinfo.io/json")
                 .then(response => response.json())
                 .then(data => {
                     ipUser = data.ip
